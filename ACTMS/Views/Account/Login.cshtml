@@ -1,0 +1,95 @@
+﻿@model ACTMS.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+    }
+<div class="col-md-12">
+    <div class="row">
+    <div class="col-md-6 landing-left">
+        <div class="dummy-phone">
+            <div class="screen-shot">
+
+                <div class="carousel carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-md-6 landing-right">
+            <div class="mm_form-container">
+                <div class="mm_wrap">
+                    <div class="mm_logo_img" style="margin-bottom:25px;">
+                        <div class="img-holder">
+                            <img width="80" height="auto" src="../Content/img/sdalogo.png" />
+                        </div>
+                    </div>
+                    <section id="loginForm">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+                            {
+
+                                <div class="alert alert-dismissible alert-danger mm_alert">
+                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <strong>Error</strong>@Html.ValidationSummary(true)
+                                </div>
+                            }
+                            <div class="form-group">
+                                <div class="col-md-12 form-label-group">
+                                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username", @class = "form-control mm-cont" })
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                    <label for="inputPassword">Username</label>
+
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="col-md-12 form-label-group">
+
+                                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control mm-cont" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                    <label for="inputPassword">Password</label>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-12">
+                                    <div class=" custom-control custom-checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+                                        @Html.LabelFor(m => m.RememberMe, new { @class = "mm_labels custom-control-label" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-12">
+                                    <input type="submit" value="Log in" class="btn btn-info col-md-offset-2 col-md-12" />
+
+                                </div>
+                            </div>
+
+                            <div class="K-1uj Z7p_S row">
+                                <div class="s311c col-md-3"></div>
+                                <div class="_0tv-g col-md-3">or</div>
+                                <div class="s311c col-md-3"></div>
+                            </div>
+
+
+                            <p>
+                                <div class="col-md-offset-2 col-md-12">
+                                    <a href="#" class="btn btn-primary col-md-offset-2 col-md-12">Request a Transfer</a>
+
+                                </div>
+                            </p>
+                        }
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

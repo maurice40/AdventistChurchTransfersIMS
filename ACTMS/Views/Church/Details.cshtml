@@ -1,0 +1,21 @@
+﻿@model ACTMS.Models.Church
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Division</th><th>Contacts</th></tr>
+        </thead>
+       
+            <tbody>
+                <tr>
+                    <td>@Model.Name</td>
+                </tr>
+                
+            </tbody>
+    </table>
+

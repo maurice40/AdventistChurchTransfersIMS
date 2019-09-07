@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ACTMS.Models.Division>
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Common.cshtml";
+}
+
+
+<div class="head-data">
+    <h4>List of Divisions</h4>
+</div>
+@if (!Model.Any())
+{
+    <h1>List of Divisions</h1><hr />
+}
+else
+{
+    <table class="table table-sm">
+        <thead>
+            <tr><th>Division</th><th>Contacts</th></tr>
+        </thead>
+        @foreach (var division in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.ActionLink(division.Name, "Details", "Division", new {id = division.Id }, null)
+                </td>
+                <td>@division.Contacts</td>
+            </tr>
+
+        </tbody>
+
+        }
+
+    </table>
+}

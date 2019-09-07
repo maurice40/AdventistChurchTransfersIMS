@@ -1,0 +1,169 @@
+﻿@model ACTMS.Models.Christian
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Christian</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Firstname, new { placeholder = "First Name", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Firstname)
+                @Html.LabelFor(model => model.Firstname, new { @class = "control-label col-md-2" })
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+          
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Lastname, new { placeholder = "Last Name", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Lastname)
+                @Html.LabelFor(model => model.Lastname, new { @class = "control-label col-md-2" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.BirthYear, new { placeholder = "Birth Year", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.BirthYear)
+                @Html.LabelFor(model => model.BirthYear, new { @class = "control-label col-md-2" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sex, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Male
+                @Html.RadioButtonFor(model => model.Sex, "Male") &nbsp;&nbsp;
+                Female
+                @Html.RadioButtonFor(model => model.Sex, "Female")
+                @Html.ValidationMessageFor(model => model.Sex)
+            </div>
+        </div>
+
+        <div class="form-group">
+           
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Father, new { placeholder = "Father", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Father)
+                @Html.LabelFor(model => model.Father, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Mother, new { placeholder = "Father", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Mother)
+                @Html.LabelFor(model => model.Mother, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.MartalStatus, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Single
+                @Html.RadioButtonFor(model => model.MartalStatus, "Single")
+                Married
+                @Html.RadioButtonFor(model => model.MartalStatus, "Married")
+                @Html.ValidationMessageFor(model => model.MartalStatus)
+                Widowed
+                @Html.RadioButtonFor(model => model.MartalStatus, "Widow")
+                @Html.ValidationMessageFor(model => model.MartalStatus)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.BaptismYear, new { placeholder = "Baptism Year", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.BaptismYear)
+                @Html.LabelFor(model => model.BaptismYear, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Photo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Photo)
+                @Html.ValidationMessageFor(model => model.Photo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Phone, new { placeholder = "Telephone", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Phone)
+                @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Email, new { placeholder = "Email", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Email)
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Location, new { placeholder = "Location", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Location)
+                @Html.LabelFor(model => model.Location, new { @class = "control-label col-md-2" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StatusId, "Member Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StatusId", "Active")
+                @Html.ValidationMessageFor(model => model.StatusId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChurchId, "Church", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ChurchId", String.Empty)
+                @Html.ValidationMessageFor(model => model.ChurchId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

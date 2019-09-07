@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ACTMS.Models.Status>
+@{
+    ViewBag.Title = "Divisions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if (!Model.Any())
+{
+    <h1>No Status Registered</h1><hr />
+}
+else
+{
+     <div class="head-data">
+        <h1>List of Statuses Available</h1><hr />
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Status</th><th>Description</th></tr>
+        </thead>
+        @foreach (var status in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.ActionLink(status.Name, "Details", "Status", new { id = status.Id }, null)
+                    </td>
+                    <td>
+                        @status.Description
+                    </td>
+                
+            </tr>
+
+        </tbody>
+
+        }
+
+    </table>
+}

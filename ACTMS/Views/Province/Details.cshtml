@@ -1,0 +1,21 @@
+﻿@model ACTMS.Models.Province
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Common.cshtml";
+}
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Division</th><th>Contacts</th></tr>
+        </thead>
+       
+            <tbody>
+                <tr>
+                    <td>@Model.Name</td>
+                </tr>
+                
+            </tbody>
+    </table>
+

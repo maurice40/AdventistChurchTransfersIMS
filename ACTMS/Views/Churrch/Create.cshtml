@@ -1,0 +1,68 @@
+﻿@model ACTMS.Models.Churrch
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Common.cshtml";
+}
+
+<h4>Add New Church</h4>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        @Html.ValidationSummary(true)
+
+        
+        <div class="form-group">
+
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Name, new { placeholder = "Name", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Name)
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 form-label-group">
+                @Html.TextBoxFor(model => model.Location, new { placeholder = "Location", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Location)
+                @Html.LabelFor(model => model.Location, new { @class = "control-label" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10 form-label-group">
+                @Html.TextBoxFor(model => model.Contact, new { placeholder = "Contacts", @class = "form-control mm-cont" })
+                @Html.ValidationMessageFor(model => model.Contact)
+                @Html.LabelFor(model => model.Contact, new { @class = "control-label" })
+            </div>
+        </div>
+
+        <div class="form-group ">
+            @Html.LabelFor(model => model.ProvinceId, "Choose Province", new { @class = "control-label" })
+            <div class="col-md-12 form-label-group">
+                @Html.DropDownList("ProvinceId", "Choose Province")
+                @Html.ValidationMessageFor(model => model.ProvinceId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 ">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
